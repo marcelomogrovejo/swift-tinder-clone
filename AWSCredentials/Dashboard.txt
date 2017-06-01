@@ -1,0 +1,11 @@
+Parse Instance
+——————————————
+
+Dashboard URL: 
+http://ec2-52-10-43-179.us-west-2.compute.amazonaws.com:80/apps
+
+Username:
+user
+
+Password:
+DSjFO1DII8CQ
