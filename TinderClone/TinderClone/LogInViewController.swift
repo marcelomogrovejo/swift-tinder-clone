@@ -30,21 +30,22 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         /*******
          * Descomment those lines to populate the database in the first startup
          *******/
 //        let populateUsers = PopulateUsers()
 //        populateUsers.createUsers()
         
-
-        
         let push = PFPush()
-        push.setMessage("This is a test message sent through the application")
+        
+        // setData and setMessage are mutually exlusive
+        let data = ["badge": "Increment"]
+        push.setData(data)
+//        push.setMessage("This is a test message sent through the application")
         push.sendInBackground { (success: Bool, error: Error?) in
             print(success)
         }
-        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {

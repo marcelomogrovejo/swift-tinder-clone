@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     var window: UIWindow?
     var parseService = ParseService()
+    let application = UIApplication.shared
+    var badgeCount: Int = 0
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -23,12 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         // Local Notification
         let center = UNUserNotificationCenter.current()
-        center.delegate = self
         center.requestAuthorization(options: [.badge, .alert, .sound], completionHandler: { (granted: Bool, error: Error?) in
         
             // Remote Push Notifications registration with APNs to get a valid token
-            UIApplication.shared.registerForRemoteNotifications()
+            application.registerForRemoteNotifications()
         })
+        center.delegate = self
         
         // For Facebook login
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -51,10 +53,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+//        application.applicationIconBadgeNumber = 0
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        // Parse - reset the badge when opens application: it means user took care about the notifications
+        let currentInstallation = PFInstallation.current()
+        if currentInstallation?.badge != 0 {
+            currentInstallation?.badge = 0
+            currentInstallation?.saveEventually()
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -65,16 +74,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     // When the app is in foreground
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        // Show an alert and play a sound 
-        // TODO: figure out why sound doesn't sound
-        completionHandler([.alert, .sound])
+        
+        // Tell the server that we open the application and reset the badge number, amoung other things I think
+        PFPush.handle(notification.request.content.userInfo)
+        
+        // Show an alert and play a sound, those values have to come from the server on json format
+        // On json we have to devine the badge number, the sound name, etc
+        completionHandler([.alert, .sound, .badge])
     }
     
-    // What to do when tap on recieived a notification
+    // When action is selected on a recieived notification
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        
-        
         completionHandler()
     }
     
@@ -99,17 +109,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
     }
     
-    // Push notification received
+    // Push notification received ?? HAS NEVER FIRED ????
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         // Print notification payload data
         print("Push notification received: \(userInfo.description)")
         
         PFPush.handle(userInfo)
     }
-    
-    
-    
-    
     
 }
 
