@@ -93,10 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         print("APNs device token: \(deviceTokenString)")
         
-        //TODO: Persist it in your backend in case it's new
-        //APNs device token: D41009A04AB85F20B6BA4B1BEB3B872BD2355295DC2F2A6AAF5E9B65FC38E2DE
-        
-        // Parse 
+        // Parse - device installation
         let installation = PFInstallation.current()
         installation?.setDeviceTokenFrom(deviceToken)
         PFPush.subscribeToChannel(inBackground: "globalChannel")
@@ -113,7 +110,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         // Print notification payload data
         print("Push notification received: \(userInfo.description)")
-        
         PFPush.handle(userInfo)
     }
     

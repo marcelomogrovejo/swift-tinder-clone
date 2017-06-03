@@ -26,6 +26,9 @@
 		9C9E33B71EBC15A500627D5A /* photo-camera-icon-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C9E33B61EBC15A500627D5A /* photo-camera-icon-29x29.png */; };
 		9C9E33B91EBC29F800627D5A /* UIImage+ReduceSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E33B81EBC29F800627D5A /* UIImage+ReduceSize.swift */; };
 		9C9E33BC1EBC314A00627D5A /* PopulateUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E33BB1EBC314A00627D5A /* PopulateUsers.swift */; };
+		9CD18D6B1EE0D3BE00C66692 /* bell.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9CD18D6A1EE0D3BE00C66692 /* bell.aiff */; };
+		9CD18D6E1EE0D40400C66692 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 9CD18D6D1EE0D40400C66692 /* README */; };
+		9CD18D701EE0D73400C66692 /* bicycle_bell.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9CD18D6F1EE0D73400C66692 /* bicycle_bell.aiff */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +56,9 @@
 		9C9E33B61EBC15A500627D5A /* photo-camera-icon-29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-camera-icon-29x29.png"; sourceTree = "<group>"; };
 		9C9E33B81EBC29F800627D5A /* UIImage+ReduceSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ReduceSize.swift"; sourceTree = "<group>"; };
 		9C9E33BB1EBC314A00627D5A /* PopulateUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopulateUsers.swift; sourceTree = "<group>"; };
+		9CD18D6A1EE0D3BE00C66692 /* bell.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = bell.aiff; sourceTree = "<group>"; };
+		9CD18D6D1EE0D40400C66692 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		9CD18D6F1EE0D73400C66692 /* bicycle_bell.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = bicycle_bell.aiff; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,7 @@
 		9C9E33961EBBE27400627D5A /* TinderClone */ = {
 			isa = PBXGroup;
 			children = (
+				9CD18D6C1EE0D3C200C66692 /* sounds */,
 				9C6895761ECE93CC009725B6 /* Utils */,
 				9C9E33BA1EBC2A0400627D5A /* Extension */,
 				9C9E33B31EBC14B500627D5A /* Images */,
@@ -131,6 +138,7 @@
 				9C9E33A01EBBE27400627D5A /* LaunchScreen.storyboard */,
 				9C598ABE1ECD56A0001539FD /* TinderClone.entitlements */,
 				9C9E33A31EBBE27400627D5A /* Info.plist */,
+				9CD18D6D1EE0D40400C66692 /* README */,
 			);
 			path = TinderClone;
 			sourceTree = "<group>";
@@ -168,6 +176,15 @@
 				9C9E33B81EBC29F800627D5A /* UIImage+ReduceSize.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		9CD18D6C1EE0D3C200C66692 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				9CD18D6F1EE0D73400C66692 /* bicycle_bell.aiff */,
+				9CD18D6A1EE0D3BE00C66692 /* bell.aiff */,
+			);
+			name = sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,8 +261,11 @@
 				9C9E33B51EBC156200627D5A /* photo-camera-icon-120x120.png in Resources */,
 				9C9E33A21EBBE27400627D5A /* LaunchScreen.storyboard in Resources */,
 				9C9E339F1EBBE27400627D5A /* Assets.xcassets in Resources */,
+				9CD18D6B1EE0D3BE00C66692 /* bell.aiff in Resources */,
+				9CD18D6E1EE0D40400C66692 /* README in Resources */,
 				9C9E33B71EBC15A500627D5A /* photo-camera-icon-29x29.png in Resources */,
 				9C9E339D1EBBE27400627D5A /* Main.storyboard in Resources */,
+				9CD18D701EE0D73400C66692 /* bicycle_bell.aiff in Resources */,
 				9C9E33B21EBC14B200627D5A /* photo-camera-icon-512x512.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

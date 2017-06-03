@@ -1,0 +1,11 @@
+JSON example for push notification from Parse Dashboard
+
+{
+  "aps" : {
+    "alert" : "You got your emails.",
+    "badge" : 9,
+    "sound" : "bingbong.aiff"
+  },
+  "acme1" : "bar",
+  "acme2" : 42
+}
